@@ -162,6 +162,62 @@ export const testimonials = {
   ]
 };
 
+export const press = {
+  title: 'Estamos na mídia',
+  description:
+    'Veículos que já contaram as histórias e resultados do Meu Nome OK. Clique nos logos para ver.',
+  logos: [
+    {
+      name: 'GFama',
+      src: '/images/press/9dae1b15-3c6e-460b-82e7-bfe5dd09e041 (1).png',
+      alt: 'Logo GFama',
+      href: 'https://gfama.com.br/lawtech-auxilia-brasileiros-na-transicao-de-devedor-para-consumidor/'
+    },
+    {
+      name: 'globo.com',
+      src: '/images/press/globo.jpg',
+      alt: 'Logo globo.com',
+      href: 'https://revistapegn.globo.com/conteudo-de-marca/pressworks/noticia/2024/12/lawtech-reduz-dividas-de-emprestimos-consignados-assegura-indenizacoes-de-ate-6-digitos-e-tornase-a-principal-salvacao-para-consumidores-endividados.ghtml'
+    },
+    {
+      name: 'UOL',
+      src: '/images/press/logo-uol-1024 (2).png',
+      alt: 'Logo UOL',
+      href: 'https://brasilagoraonline.com.br/noticias/2024/08/emprestimos-consignados-saiba-como-suspender-pagamentos-por-ate-180-dias/'
+    },
+    {
+      name: 'Valor Econômico',
+      src: '/images/press/logo-valor-economico-1024 (1).png',
+      alt: 'Logo Valor Econômico',
+      href: 'https://valor.globo.com/patrocinado/pressworks/noticia/2024/12/24/lawtech-reduz-dividas-de-emprestimos-consignados-assegura-indenizacoes-de-ate-6-digitos-e-tornase-a-principal-salvacao-para-consumidores-endividados.ghtml'
+    },
+    {
+      name: 'Pequenas Empresas & Grandes Negócios',
+      src: '/images/press/Pequenas_Empresas_&_Grandes_Negócios_(programa_de_televisão) (1).png',
+      alt: 'Logo PEGN',
+      href: 'https://revistapegn.globo.com/conteudo-de-marca/pressworks/noticia/2024/12/lawtech-reduz-dividas-de-emprestimos-consignados-assegura-indenizacoes-de-ate-6-digitos-e-tornase-a-principal-salvacao-para-consumidores-endividados.ghtml'
+    },
+    {
+      name: 'Gazeta do Estado',
+      src: '/images/press/1678846716GS_250x90 (1).png',
+      alt: 'Logo Gazeta do Estado',
+      href: 'https://gazetadasemana.com.br/coluna/12474/emprestimos-consignados-uma-armadilha-financeira-para-muitos-brasileiros'
+    },
+    {
+      name: 'É Pop na Web',
+      src: '/images/press/Logo-É-pop-na-web-1-2 (1).png',
+      alt: 'Logo É Pop na Web',
+      href: 'https://epopnaweb.com.br/se-depender-da-empresa-meu-nome-ok-seu-salario-nunca-mais-vai-sofrer-descontos-de-emprestimos-consignados/'
+    },
+    {
+      name: 'EgoBrazil',
+      src: '/images/press/logo_22 (2).png',
+      alt: 'Logo EgoBrazil',
+      href: 'https://egobrazil.ig.com.br/o-maior-escritorio-juridico-do-brasil-que-esta-mudando-o-jogo-para-devedores-de-consignados/'
+    }
+  ]
+};
+
 export const faq = {
   title: 'Perguntas frequentes',
   items: [

@@ -6,9 +6,10 @@ import Highlights from '@components/sections/Highlights.astro';
 import Steps from '@components/sections/Steps.astro';
 import Benefits from '@components/sections/Benefits.astro';
 import Testimonials from '@components/sections/Testimonials.astro';
+import Press from '@components/sections/Press.astro';
 import Faq from '@components/sections/Faq.astro';
 import MultiStepForm from '@components/forms/MultiStepForm.tsx';
-import { hero, trustSection, uspHighlights, steps, benefits, testimonials, faq } from '@content/home';
+import { hero, trustSection, uspHighlights, steps, benefits, press, testimonials, faq } from '@content/home';
 
 const pageTitle = 'Meu Nome OK | Limpeza de nome e renegociação de dívidas com especialistas';
 const pageDescription = 'Reduza dívidas, recupere seu crédito e tenha acompanhamento humano em todas as etapas. Negociação personalizada para CPF e CNPJ com resultados em até 24h.';
@@ -68,6 +69,7 @@ const pageDescription = 'Reduza dívidas, recupere seu crédito e tenha acompanh
       </div>
     </div>
   </section>
+  <Press content={press} />
   <Testimonials content={testimonials} />
   <Faq content={faq} />
 </MainLayout>
