@@ -5,12 +5,13 @@ import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import { VitePWA } from 'vite-plugin-pwa';
 import react from '@astrojs/react';
-import netlify from '@astrojs/netlify/functions';
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   site: 'https://www.meunomeok.com.br',
-  adapter: netlify(),
-  output: 'hybrid',
+  adapter: netlify({
+    hybrid: true
+  }),
   integrations: [
     react(),
     tailwind({
