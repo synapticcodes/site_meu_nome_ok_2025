@@ -1,0 +1,66 @@
+---
+type CardVariant = 'default' | 'highlight' | 'outline';
+
+type AllowedTags = 'div' | 'section' | 'article' | 'li';
+
+interface Props {
+  as?: AllowedTags;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  variant?: CardVariant;
+  href?: string;
+  className?: string;
+}
+
+const {
+  as = 'div',
+  eyebrow,
+  title,
+  description,
+  variant = 'default',
+  href,
+  className
+} = Astro.props as Props;
+
+const variantClasses: Record<CardVariant, string> = {
+  default: 'bg-white border border-neutral-100 shadow-sm',
+  highlight: 'bg-primary text-white shadow-soft',
+  outline: 'bg-white border border-primary/40'
+};
+
+const Tag = href ? 'a' : as;
+const tagProps = href ? { href } : {};
+---
+
+<Tag
+  {...tagProps}
+  class:list={[
+    'flex flex-col gap-4 rounded-3xl p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+    variantClasses[variant],
+    className
+  ]}
+>
+  {eyebrow && (
+    <span class:list={['text-sm font-semibold uppercase tracking-wide', variant === 'highlight' ? 'text-white/90' : 'text-primary']}>
+      {eyebrow}
+    </span>
+  )}
+  {title && (
+    <h3
+      class:list={[
+        'text-h4 font-semibold',
+        variant === 'highlight' ? 'text-white' : 'text-neutral-900'
+      ]}
+    >
+      {title}
+    </h3>
+  )}
+  {description && (
+    <p class:list={[variant === 'highlight' ? 'text-white/90' : 'text-neutral-500']}>
+      {description}
+    </p>
+  )}
+  <slot />
+  <slot name="footer" />
+</Tag>

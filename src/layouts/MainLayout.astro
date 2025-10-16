@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import { Navigation } from '@components/layout/Navigation';
+import Footer from '@components/layout/Footer.astro';
+import Seo from '@components/layout/Seo.astro';
+import { navItems, footerLegalLinks, footerSocialLinks } from '@config/navigation';
+import CookieConsent from '@components/layout/CookieConsent.tsx';
+
+interface Props {
+  title: string;
+  description: string;
+  showHero?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+  breadcrumbs?: { label: string; href: string }[];
+  ogImage?: {
+    url: string;
+    width?: number;
+    height?: number;
+    alt?: string;
+  };
+}
+
+const {
+  title,
+  description,
+  ctaLabel = 'Quero negociar minhas dívidas',
+  ctaHref = '#formulario',
+  breadcrumbs = [],
+  ogImage
+} = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.toString();
+---
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <Seo
+      title={title}
+      description={description}
+      breadcrumbs={breadcrumbs}
+      ogImage={ogImage}
+      canonical={canonicalUrl}
+    />
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Meu Nome OK',
+        url: 'https://www.meunomeok.com.br',
+        logo: 'https://www.meunomeok.com.br/icons/logo.svg',
+        sameAs: footerSocialLinks.map((link) => link.href),
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: '+55 0800 123 4567',
+            contactType: 'customer service',
+            areaServed: 'BR'
+          }
+        ]
+      })}
+    </script>
+  </head>
+  <body class="bg-neutral-50 text-neutral-900">
+    <a href="#conteudo-principal" class="skip-link absolute left-0 top-0 -translate-y-full bg-primary px-4 py-2 text-sm font-semibold text-white focus:translate-y-0">
+      Ir para o conteúdo principal
+    </a>
+    <Navigation
+      client:load
+      navItems={navItems}
+      cta={{ label: ctaLabel, href: ctaHref }}
+    />
+    <main id="conteudo-principal" class="flex-1">
+      <slot />
+    </main>
+    <Footer
+      navItems={navItems}
+      legalLinks={footerLegalLinks}
+      socialLinks={footerSocialLinks}
+      businessAddress="Av. Paulista, 1000 - São Paulo, SP"
+      phone="08001234567"
+      email="contato@meunomeok.com.br"
+    />
+    <CookieConsent client:load />
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="module" is:inline>
+      import { registerWebVitals } from '@utils/webVitals';
+      registerWebVitals();
+    </script>
+  </body>
+</html>

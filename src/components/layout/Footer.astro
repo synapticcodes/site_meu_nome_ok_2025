@@ -1,0 +1,115 @@
+---
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  navItems: readonly LinkItem[];
+  legalLinks: readonly LinkItem[];
+  socialLinks: readonly { href: string; label: string; icon: string }[];
+  businessAddress?: string;
+  phone?: string;
+  email?: string;
+}
+
+const {
+  navItems = [],
+  legalLinks = [],
+  socialLinks = [],
+  businessAddress,
+  phone,
+  email
+} = Astro.props;
+---
+
+<footer class="border-t border-neutral-100 bg-white" aria-labelledby="rodape">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16">
+    <div class="flex flex-col gap-12 md:flex-row md:justify-between">
+      <div class="max-w-md space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="/icons/logo.svg" alt="Meu Nome OK" class="h-12 w-auto" />
+          <div>
+            <p class="font-display text-lg font-semibold text-primary">Meu Nome OK</p>
+            <p class="text-sm text-neutral-500">
+              Especialistas em renegociação de dívidas e reconstrução da sua saúde financeira.
+            </p>
+          </div>
+        </div>
+        {businessAddress && (
+          <p class="text-sm text-neutral-500">
+            <strong class="font-semibold text-neutral-700">Endereço:</strong> {businessAddress}
+          </p>
+        )}
+        {phone && (
+          <p class="text-sm text-neutral-500">
+            <strong class="font-semibold text-neutral-700">Telefone:</strong>
+            <a class="ml-2 text-primary underline-offset-4 hover:underline" href={`tel:${phone}`}>
+              {phone}
+            </a>
+          </p>
+        )}
+        {email && (
+          <p class="text-sm text-neutral-500">
+            <strong class="font-semibold text-neutral-700">E-mail:</strong>
+            <a class="ml-2 text-primary underline-offset-4 hover:underline" href={`mailto:${email}`}>
+              {email}
+            </a>
+          </p>
+        )}
+      </div>
+      <nav aria-label="Links principais" class="grid gap-10 md:grid-cols-3">
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-600">Empresa</h3>
+          <ul class="mt-3 space-y-2 text-sm text-neutral-500">
+            {navItems.map((item) => (
+              <li>
+                <a class="transition hover:text-primary" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-600">Legal</h3>
+          <ul class="mt-3 space-y-2 text-sm text-neutral-500">
+            {legalLinks.map((item) => (
+              <li>
+                <a class="transition hover:text-primary" href={item.href}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-neutral-600">Redes sociais</h3>
+          <ul class="mt-3 flex gap-4">
+            {socialLinks.map((item) => (
+              <li>
+                <a
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 text-primary transition hover:border-primary hover:bg-primary/10"
+                  href={item.href}
+                  aria-label={item.label}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span class="sr-only">{item.label}</span>
+                  <img src={item.icon} alt="" aria-hidden="true" class="h-5 w-5" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-3 border-t border-neutral-100 pt-6 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
+      <p>&copy; {new Date().getFullYear()} Meu Nome OK. Todos os direitos reservados.</p>
+      <p>
+        Desenvolvido com foco em <span class="font-semibold text-primary">acessibilidade</span>,
+        <span class="font-semibold text-primary"> performance</span> e <span class="font-semibold text-primary">conversão</span>.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.meunomeok.com.br/sitemap-index.xml

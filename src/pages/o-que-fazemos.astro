@@ -1,0 +1,21 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHero from '@components/sections/PageHero.astro';
+import ServiceSection from '@components/sections/ServiceSection.astro';
+import Checklist from '@components/sections/Checklist.astro';
+import { services } from '@content/services';
+
+const content = services.oQueFazemos;
+const pageTitle = `${content.title} | Meu Nome OK`;
+---
+<MainLayout
+  title={pageTitle}
+  description={content.description}
+  breadcrumbs={[{ label: 'Início', href: '/' }, { label: content.title, href: '/o-que-fazemos' }]}
+>
+  <PageHero content={content.hero} />
+  {content.sections.map((section) => (
+    <ServiceSection section={section} />
+  ))}
+  <Checklist items={content.checklist} title="Por que escolher o Meu Nome OK" />
+</MainLayout>

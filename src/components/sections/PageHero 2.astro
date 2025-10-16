@@ -1,0 +1,32 @@
+---
+type HeroContent = typeof import('@content/services').services.comoFunciona.hero;
+
+interface Props {
+  content: HeroContent;
+}
+
+const { content } = Astro.props as Props;
+---
+<section class="bg-gradient-to-b from-white via-neutral-50 to-neutral-100">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-16 text-center">
+    <span class="mx-auto inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
+      {content.eyebrow}
+    </span>
+    <h1>{content.title}</h1>
+    <p class="mx-auto max-w-2xl text-lg text-neutral-600">{content.description}</p>
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href={content.primaryCta.href}
+        class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      >
+        {content.primaryCta.label}
+      </a>
+      <a
+        href={content.secondaryCta.href}
+        class="inline-flex items-center justify-center rounded-full border border-primary px-8 py-3 text-base font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      >
+        {content.secondaryCta.label}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+---
+<MainLayout
+  title="Obrigado! | Meu Nome OK"
+  description="Recebemos suas informações. Nosso time entrará em contato para apresentar o plano de renegociação."
+  breadcrumbs={[{ label: 'Início', href: '/' }, { label: 'Obrigado', href: '/obrigado' }]}
+  ctaLabel="Voltar ao início"
+  ctaHref="/"
+>
+  <section class="bg-white py-24">
+    <div class="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 px-6 text-center">
+      <span class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-feedback-success/10 text-feedback-success">
+        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5 10 17l9-10" />
+        </svg>
+      </span>
+      <h1>Recebemos suas informações</h1>
+      <p class="text-lg text-neutral-600">
+        Um especialista do Meu Nome OK entrará em contato em até <strong class="text-primary">24 horas úteis</strong>
+        para apresentar o plano personalizado de renegociação.
+      </p>
+      <div class="grid gap-4 text-left text-neutral-600 md:grid-cols-2">
+        <div class="rounded-3xl border border-neutral-100 bg-neutral-50 p-6 shadow-sm">
+          <h2 class="text-h4 text-primary">Próximos passos</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li>1. Você receberá um e-mail de confirmação com o número do protocolo.</li>
+            <li>2. Faremos uma análise completa do seu CPF/CNPJ e dívidas.</li>
+            <li>3. Apresentaremos propostas com simulações de pagamento.</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl border border-neutral-100 bg-neutral-50 p-6 shadow-sm">
+          <h2 class="text-h4 text-primary">Canais de contato</h2>
+          <p class="text-sm">
+            Enquanto isso, você pode tirar dúvidas pelo WhatsApp <a class="text-primary underline" href="https://wa.me/5508001234567">0800 123 4567</a> ou pelo e-mail <a class="text-primary underline" href="mailto:suporte@meunomeok.com.br">suporte@meunomeok.com.br</a>.
+          </p>
+        </div>
+      </div>
+      <a
+        class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        href="/"
+      >
+        Voltar para a página inicial
+      </a>
+    </div>
+  </section>
+</MainLayout>

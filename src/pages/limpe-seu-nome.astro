@@ -1,0 +1,54 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHero from '@components/sections/PageHero.astro';
+import Highlights from '@components/sections/Highlights.astro';
+import Faq from '@components/sections/Faq.astro';
+import MultiStepForm from '@components/forms/MultiStepForm.tsx';
+import { limpeSeuNomePage } from '@content/limpe-seu-nome';
+import { faq as homepageFaq } from '@content/home';
+
+const pageTitle = `${limpeSeuNomePage.title} | Meu Nome OK`;
+---
+<MainLayout
+  title={pageTitle}
+  description={limpeSeuNomePage.description}
+  breadcrumbs={[{ label: 'Início', href: '/' }, { label: limpeSeuNomePage.title, href: '/limpe-seu-nome' }]}
+  ctaLabel="Preciso de ajuda agora"
+  ctaHref="/#formulario"
+>
+  <PageHero content={limpeSeuNomePage.hero} />
+  <Highlights items={limpeSeuNomePage.highlights} />
+  <section id="formulario" class="bg-white py-20">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:flex-row">
+      <div class="flex-1 space-y-5">
+        <span class="text-sm font-semibold uppercase tracking-wide text-primary">Inicie a renegociação</span>
+        <h2 class="text-h2">Formulário inteligente em múltiplas etapas</h2>
+        <p class="text-neutral-600">
+          Organizamos as perguntas em blocos rápidos para entender seu cenário e construir a melhor estratégia. Você pode salvar o progresso e retornar quando quiser.
+        </p>
+        <ul class="space-y-3 text-sm text-neutral-600">
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Etapas específicas para CPF ou CNPJ, dependendo do tipo de dívida.
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Validação automática de CPF/CNPJ e CEP para evitar erros de digitação.
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Anexos opcionais para incluir boletos, cartas de cobrança ou comprovantes.
+          </li>
+        </ul>
+      </div>
+      <div class="flex-1">
+        <MultiStepForm client:load />
+      </div>
+    </div>
+  </section>
+  <Faq
+    content={{ title: 'Dúvidas sobre o formulário', items: limpeSeuNomePage.faqs }}
+    schemaId="faq-formulario"
+  />
+  <Faq content={homepageFaq} schemaId="faq-geral" />
+</MainLayout>

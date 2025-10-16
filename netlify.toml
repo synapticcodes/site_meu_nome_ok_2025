@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  FORM_WEBHOOK_URL = "${FORM_WEBHOOK_URL}"
+  PUBLIC_ANALYTICS_ENDPOINT = "${PUBLIC_ANALYTICS_ENDPOINT}"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home-2"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/limpe-seu-nome-agora"
+  to = "/limpe-seu-nome"
+  status = 301
+
+[[redirects]]
+  from = "/como-funciona/"
+  to = "/como-funciona"
+  status = 301
+
+[[redirects]]
+  from = "/o-que-fazemos/"
+  to = "/o-que-fazemos"
+  status = 301
+
+[[redirects]]
+  from = "/ajuda/"
+  to = "/ajuda"
+  status = 301

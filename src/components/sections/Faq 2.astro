@@ -1,0 +1,52 @@
+---
+type FaqContent = typeof import('@content/home').faq;
+
+interface Props {
+  content: FaqContent | { title: string; items: { question: string; answer: string }[] };
+  schemaId?: string;
+}
+
+const { content, schemaId = 'faq-schema' } = Astro.props as Props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: content.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<section id="faq" class="bg-neutral-50">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-20">
+    <div class="max-w-2xl space-y-4">
+      <span class="text-sm font-semibold uppercase tracking-wide text-primary">Dúvidas</span>
+      <h2>{content.title}</h2>
+    </div>
+    <div class="space-y-4">
+      {content.items.map((item, index) => (
+        <details
+          class="group rounded-3xl border border-neutral-100 bg-white p-6 shadow-sm"
+          open={index === 0}
+        >
+          <summary class="flex cursor-pointer items-center justify-between text-left text-lg font-semibold text-neutral-800">
+            {item.question}
+            <span class="ml-4 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition group-open:rotate-45">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 4.5v11m5.5-5.5h-11" />
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-neutral-600">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json" is:inline id={schemaId}>
+  {JSON.stringify(faqSchema)}
+</script>

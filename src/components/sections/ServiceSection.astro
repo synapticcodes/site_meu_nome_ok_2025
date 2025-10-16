@@ -1,0 +1,32 @@
+---
+interface SectionContent {
+  id: string;
+  badge?: string;
+  title: string;
+  content: readonly string[];
+}
+
+interface Props {
+  section: SectionContent;
+}
+
+const { section } = Astro.props as Props;
+---
+<section id={section.id} class="bg-white">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12">
+    {section.badge && (
+      <span class="text-sm font-semibold uppercase tracking-wide text-primary">
+        {section.badge}
+      </span>
+    )}
+    <h2>{section.title}</h2>
+    <ul class="space-y-3 text-neutral-600">
+      {section.content.map((paragraph) => (
+        <li class="flex gap-3">
+          <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></span>
+          <span>{paragraph}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

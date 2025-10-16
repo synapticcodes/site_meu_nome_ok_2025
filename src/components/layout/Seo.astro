@@ -1,0 +1,70 @@
+---
+interface OpenGraphImage {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: OpenGraphImage;
+  lang?: string;
+  type?: string;
+  robots?: string;
+  breadcrumbs?: { label: string; href: string }[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  lang = 'pt-BR',
+  type = 'website',
+  robots = 'index,follow',
+  breadcrumbs = []
+} = Astro.props;
+
+const siteName = 'Meu Nome OK';
+const url = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://www.meunomeok.com.br').toString();
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:locale" content={lang} />
+<meta property="og:url" content={url} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{ogImage && (
+  <>
+    <meta property="og:image" content={ogImage.url} />
+    {ogImage.width && <meta property="og:image:width" content={ogImage.width.toString()} />}
+    {ogImage.height && <meta property="og:image:height" content={ogImage.height.toString()} />}
+    {ogImage.alt && <meta property="og:image:alt" content={ogImage.alt} />}
+    <meta name="twitter:image" content={ogImage.url} />
+  </>
+)}
+{canonical && <link rel="canonical" href={canonical} />}
+
+{breadcrumbs.length > 0 && (
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.label,
+        item: new URL(crumb.href, Astro.site ?? 'https://www.meunomeok.com.br').toString()
+      }))
+    })}
+  </script>
+)}

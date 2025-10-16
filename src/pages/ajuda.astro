@@ -1,0 +1,24 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import PageHero from '@components/sections/PageHero.astro';
+import ServiceSection from '@components/sections/ServiceSection.astro';
+import Checklist from '@components/sections/Checklist.astro';
+import Faq from '@components/sections/Faq.astro';
+import { services } from '@content/services';
+import { faq as homepageFaq } from '@content/home';
+
+const content = services.ajuda;
+const pageTitle = `${content.title} | Meu Nome OK`;
+---
+<MainLayout
+  title={pageTitle}
+  description={content.description}
+  breadcrumbs={[{ label: 'Início', href: '/' }, { label: content.title, href: '/ajuda' }]}
+>
+  <PageHero content={content.hero} />
+  {content.sections.map((section) => (
+    <ServiceSection section={section} />
+  ))}
+  <Checklist items={content.checklist} title="Canais disponíveis" />
+  <Faq content={homepageFaq} />
+</MainLayout>

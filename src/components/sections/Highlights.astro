@@ -1,0 +1,24 @@
+---
+interface HighlightItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items: readonly HighlightItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+<section class="bg-gradient-to-br from-primary/5 via-white to-neutral-50">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-16">
+    <div class="grid gap-6 md:grid-cols-3">
+      {items.map((item) => (
+        <div class="rounded-3xl border border-primary/10 bg-white/80 p-6 shadow-sm backdrop-blur">
+          <h3 class="text-h4 text-primary">{item.title}</h3>
+          <p class="mt-3 text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

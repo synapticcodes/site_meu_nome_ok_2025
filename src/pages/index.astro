@@ -1,16 +1,52 @@
 ---
+import MainLayout from '@layouts/MainLayout.astro';
+import Hero from '@components/sections/Hero.astro';
+import Trust from '@components/sections/Trust.astro';
+import Highlights from '@components/sections/Highlights.astro';
+import Steps from '@components/sections/Steps.astro';
+import Benefits from '@components/sections/Benefits.astro';
+import Testimonials from '@components/sections/Testimonials.astro';
+import Faq from '@components/sections/Faq.astro';
+import MultiStepForm from '@components/forms/MultiStepForm.tsx';
+import { hero, trustSection, uspHighlights, steps, benefits, testimonials, faq } from '@content/home';
 
+const pageTitle = 'Meu Nome OK | Limpeza de nome e renegociação de dívidas com especialistas';
+const pageDescription = 'Reduza dívidas, recupere seu crédito e tenha acompanhamento humano em todas as etapas. Negociação personalizada para CPF e CNPJ com resultados em até 24h.';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title={pageTitle} description={pageDescription}>
+  <Hero content={hero} />
+  <Trust content={trustSection} />
+  <Highlights items={uspHighlights} />
+  <Steps content={steps} />
+  <Benefits content={benefits} />
+  <section id="formulario" class="bg-white py-20">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:flex-row">
+      <div class="flex-1 space-y-5">
+        <span class="text-sm font-semibold uppercase tracking-wide text-primary">Formulário seguro</span>
+        <h2 class="text-h2">Conte seu caso, nós cuidamos da negociação</h2>
+        <p class="text-neutral-600">
+          Em menos de 2 minutos você nos envia as informações necessárias para iniciarmos a análise. Respondemos com o plano personalizado em até 24 horas úteis.
+        </p>
+        <ul class="space-y-3 text-sm text-neutral-600">
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Dados criptografados e protegidos pela LGPD.
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Atendimento humano em todas as etapas.
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+            Sem custo para iniciar.
+          </li>
+        </ul>
+      </div>
+      <div class="flex-1">
+        <MultiStepForm client:load />
+      </div>
+    </div>
+  </section>
+  <Testimonials content={testimonials} />
+  <Faq content={faq} />
+</MainLayout>

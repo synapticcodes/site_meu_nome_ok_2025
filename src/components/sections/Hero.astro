@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import heroIllustration from '@assets/images/hero.png';
+
+type HeroContent = typeof import('@content/home').hero;
+
+interface HeroProps {
+  content: HeroContent;
+}
+
+const { content } = Astro.props as HeroProps;
+---
+<section class="relative overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-neutral-100">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-20 md:flex-row md:items-center">
+    <div class="flex-1 space-y-6">
+      <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+        <span class="h-2 w-2 rounded-full bg-primary"></span>
+        {content.eyebrow}
+      </span>
+      <h1>{content.title}</h1>
+      <p class="max-w-xl text-lg text-neutral-600">{content.description}</p>
+      <div class="flex flex-col items-start gap-4 sm:flex-row">
+        <a
+          href={content.primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          {content.primaryCta.label}
+        </a>
+        <a
+          href={content.secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-primary px-8 py-3 text-base font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          {content.secondaryCta.label}
+        </a>
+      </div>
+      <dl class="grid w-full gap-6 sm:grid-cols-3">
+        {content.highlights.map((item) => (
+          <div class="rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sm backdrop-blur">
+            <dt class="text-sm font-medium text-neutral-500">{item.label}</dt>
+            <dd class="mt-2 text-3xl font-semibold text-primary">{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="relative flex-1">
+      <div class="absolute inset-0 rounded-full bg-primary/10 blur-3xl" aria-hidden="true"></div>
+      <div class="relative overflow-hidden rounded-3xl border border-primary/20 bg-white shadow-soft">
+        <Image
+          src={heroIllustration}
+          alt="Especialista do Meu Nome OK auxiliando cliente na renegociação de dívidas"
+          width={640}
+          height={640}
+          class="h-full w-full object-cover"
+          loading="eager"
+          format="webp"
+        />
+      </div>
+    </div>
+  </div>
+</section>
