@@ -5,6 +5,13 @@ interface Props {
   content: StepsContent;
 }
 
+const iconPaths = [
+  '/images/icons/icon-steps-1.webp',
+  '/images/icons/icon-steps-2.webp',
+  '/images/icons/icon-steps-3.webp',
+  '/images/icons/icon-steps-4.webp'
+];
+
 const { content } = Astro.props;
 ---
 <section id="como-funciona" class="relative isolate overflow-hidden bg-neutral-50">
@@ -24,6 +31,9 @@ const { content } = Astro.props;
               {step.step}
               <span class="pointer-events-none absolute -bottom-8 left-1/2 hidden h-16 w-px -translate-x-1/2 bg-gradient-to-b from-primary/60 to-transparent md:block" aria-hidden="true"></span>
             </span>
+            <div class="hidden h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 sm:flex">
+              <img src={iconPaths[index % iconPaths.length]} alt={`Ícone da etapa ${index + 1}`} class="h-7 w-7 object-contain" loading="lazy" />
+            </div>
             <div>
               <h3 class="text-h4 text-neutral-900">{step.title}</h3>
               <p class="text-xs uppercase tracking-wide text-primary/70">Etapa {index + 1}</p>
