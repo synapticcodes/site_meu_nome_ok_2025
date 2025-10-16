@@ -5,9 +5,12 @@ import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import { VitePWA } from 'vite-plugin-pwa';
 import react from '@astrojs/react';
+import netlify from '@astrojs/netlify/functions';
 
 export default defineConfig({
   site: 'https://www.meunomeok.com.br',
+  adapter: netlify(),
+  output: 'hybrid',
   integrations: [
     react(),
     tailwind({
@@ -31,7 +34,6 @@ export default defineConfig({
       })
     )
   ],
-  output: 'static',
   build: {
     format: 'directory'
   },

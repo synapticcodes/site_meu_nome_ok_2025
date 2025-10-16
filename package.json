@@ -19,6 +19,7 @@
     "perf:budget": "node scripts/performance-budget.mjs"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.5.13",
     "@astrojs/react": "^4.4.0",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
