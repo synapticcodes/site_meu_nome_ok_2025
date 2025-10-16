@@ -6,12 +6,16 @@ interface Props {
 }
 
 const { content } = Astro.props;
+
+const midpoint = Math.ceil(content.logos.length / 2);
+const firstRow = content.logos.slice(0, midpoint);
+const secondRow = content.logos.slice(midpoint);
 ---
 <section aria-label="Parceiros" class="bg-white">
   <div class="relative isolate overflow-hidden">
     <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/10 via-white to-transparent" aria-hidden="true" />
-    <div class="absolute inset-y-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
-    <div class="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16">
+    <div class="absolute inset-y-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+    <div class="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-20">
       <div class="flex flex-col items-center gap-3 text-center">
         <p class="text-sm font-semibold uppercase tracking-wide text-primary">Confiança comprovada</p>
         <h2 class="text-h3 text-neutral-900">{content.title}</h2>
@@ -19,11 +23,63 @@ const { content } = Astro.props;
           Empresas e instituições que já compartilharam seus casos conosco e recomendam o Meu Nome OK.
         </p>
       </div>
-      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+      <div class="relative hidden md:block">
+        <div class="absolute inset-0 rounded-[2rem] border border-white/60 bg-white/70 shadow-[0_32px_80px_-56px_rgba(17,24,39,0.55)] backdrop-blur-sm" aria-hidden="true" />
+        <div class="relative overflow-hidden rounded-[2rem] border border-transparent bg-white/80 px-10 py-10">
+          <div class="flex flex-col gap-6">
+            <div class="relative h-20 overflow-hidden">
+              <div class="absolute left-0 top-0 flex min-w-max items-center gap-8 animate-partner-marquee-forward">
+                {firstRow.map((logo, index) => (
+                  <div
+                    key={`row-1-${index}`}
+                    class="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-neutral-200/60 bg-white/90 p-3 shadow-[0_12px_30px_-26px_rgba(17,24,39,0.55)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-32px_rgba(17,24,39,0.45)]"
+                  >
+                    <img src={logo.src} alt={logo.alt} loading="lazy" class="h-10 w-full object-contain" />
+                  </div>
+                ))}
+              </div>
+              <div class="absolute left-0 top-0 flex min-w-max items-center gap-8 animate-partner-marquee-forward-offset" aria-hidden="true">
+                {firstRow.map((logo, index) => (
+                  <div
+                    key={`row-1-offset-${index}`}
+                    class="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-neutral-200/60 bg-white/90 p-3 shadow-[0_12px_30px_-26px_rgba(17,24,39,0.55)]"
+                  >
+                    <img src={logo.src} alt="" loading="lazy" class="h-10 w-full object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="relative h-20 overflow-hidden">
+              <div class="absolute left-0 top-0 flex min-w-max items-center gap-8 animate-partner-marquee-reverse">
+                {secondRow.map((logo, index) => (
+                  <div
+                    key={`row-2-${index}`}
+                    class="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-neutral-200/60 bg-white/90 p-3 shadow-[0_12px_30px_-26px_rgba(17,24,39,0.55)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-32px_rgba(17,24,39,0.45)]"
+                  >
+                    <img src={logo.src} alt={logo.alt} loading="lazy" class="h-10 w-full object-contain" />
+                  </div>
+                ))}
+              </div>
+              <div class="absolute left-0 top-0 flex min-w-max items-center gap-8 animate-partner-marquee-reverse-offset" aria-hidden="true">
+                {secondRow.map((logo, index) => (
+                  <div
+                    key={`row-2-offset-${index}`}
+                    class="flex h-16 w-28 items-center justify-center overflow-hidden rounded-xl border border-neutral-200/60 bg-white/90 p-3 shadow-[0_12px_30px_-26px_rgba(17,24,39,0.55)]"
+                  >
+                    <img src={logo.src} alt="" loading="lazy" class="h-10 w-full object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-20 rounded-[2rem_0_0_2rem] bg-gradient-to-r from-white via-white/85 to-transparent" aria-hidden="true" />
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-20 rounded-[0_2rem_2rem_0] bg-gradient-to-l from-white via-white/85 to-transparent" aria-hidden="true" />
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3 md:hidden">
         {content.logos.map((logo) => (
-          <div class="group relative flex h-32 items-center justify-center overflow-hidden rounded-3xl border border-neutral-100 bg-white/90 p-6 shadow-[0_18px_45px_-40px_rgba(17,24,39,0.45)] backdrop-blur-sm transition hover:-translate-y-1">
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" aria-hidden="true" />
-            <img src={logo.src} alt={logo.alt} class="max-h-12 w-auto object-contain brightness-110" loading="lazy" />
+          <div class="flex h-16 items-center justify-center rounded-xl border border-neutral-200/60 bg-white/90 p-3 shadow-[0_12px_30px_-26px_rgba(17,24,39,0.55)]" key={logo.src}>
+            <img src={logo.src} alt={logo.alt} loading="lazy" class="h-10 w-full object-contain" />
           </div>
         ))}
       </div>

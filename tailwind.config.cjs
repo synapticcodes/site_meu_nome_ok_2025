@@ -54,10 +54,32 @@ module.exports = {
         grid: {
           '0%': { transform: 'translate3d(0,0,0)' },
           '100%': { transform: 'translate3d(0,-50%,0)' }
+        },
+        'partner-marquee-forward': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        'partner-marquee-forward-offset': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' }
+        },
+        'partner-marquee-reverse': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' }
+        },
+        'partner-marquee-reverse-offset': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' }
         }
       },
       animation: {
-        grid: 'grid 35s linear infinite'
+        grid: 'grid 35s linear infinite',
+        'partner-marquee-forward': 'partner-marquee-forward 32s linear infinite',
+        'partner-marquee-forward-offset':
+          'partner-marquee-forward-offset 32s linear infinite',
+        'partner-marquee-reverse': 'partner-marquee-reverse 36s linear infinite',
+        'partner-marquee-reverse-offset':
+          'partner-marquee-reverse-offset 36s linear infinite'
       },
       screens: {
         xs: '480px',
