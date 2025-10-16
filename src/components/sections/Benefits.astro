@@ -29,7 +29,6 @@ const { content } = Astro.props as Props;
         <h2 class="text-h2 text-neutral-900">{content.title}</h2>
         <p class="text-neutral-600">{content.description}</p>
         <div class="flex items-center gap-4 rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-white to-white p-6 shadow-[0_22px_50px_-35px_rgba(102,42,231,0.65)]">
-          <img src="/images/avatars/avatar-benefits.jpg" alt="Consultora analisando plano personalizado" class="hidden h-16 w-16 rounded-full object-cover sm:block" loading="lazy" />
           <div>
             <p class="text-sm font-semibold text-primary">Cobertura completa</p>
             <p class="mt-2 text-sm text-neutral-600">
@@ -47,12 +46,6 @@ const { content } = Astro.props as Props;
             </span>
             <h3 class="text-h4 text-neutral-900">{item.title}</h3>
             <p class="text-neutral-600">{item.description}</p>
-            <div class="mt-auto flex items-center gap-3 rounded-2xl bg-primary/5 p-4">
-              <img src="/images/avatars/avatar-benefits-2.jpg" alt={`Cliente satisfeito: ${item.title}`} class="hidden h-10 w-10 rounded-full object-cover sm:block" loading="lazy" />
-              <p class="text-xs text-neutral-500">
-                Histórias reais de atendimento humano e acompanhamento próximo em cada etapa.
-              </p>
-            </div>
           </article>
         ))}
       </div>
