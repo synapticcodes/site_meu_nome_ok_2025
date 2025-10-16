@@ -10,14 +10,28 @@ interface Props {
 
 const { items } = Astro.props as Props;
 ---
-<section class="bg-gradient-to-br from-primary/5 via-white to-neutral-50">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-16">
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-primary/8 via-white to-neutral-50">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(102,42,231,0.18),transparent_55%)]" aria-hidden="true" />
+  <div class="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-20">
+    <div class="max-w-3xl space-y-3">
+      <span class="text-xs font-semibold uppercase tracking-[0.32em] text-primary/80">Destaques</span>
+      <h2 class="text-h2 text-neutral-900">Por que milhares de pessoas confiam no Meu Nome OK</h2>
+      <p class="text-neutral-600">
+        Processos claros, especialistas humanos e tecnologia para acelerar cada etapa da negociação.
+      </p>
+    </div>
     <div class="grid gap-6 md:grid-cols-3">
       {items.map((item) => (
-        <div class="rounded-3xl border border-primary/10 bg-white/80 p-6 shadow-sm backdrop-blur">
-          <h3 class="text-h4 text-primary">{item.title}</h3>
+        <article class="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/85 p-8 shadow-[0_30px_60px_-45px_rgba(102,42,231,0.75)] backdrop-blur transition duration-200 hover:-translate-y-1 hover:shadow-[0_40px_80px_-40px_rgba(102,42,231,0.45)]">
+          <div class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity duration-200 group-hover:opacity-100" aria-hidden="true" />
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-inner shadow-primary/20">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 4v12m6-6H4" />
+            </svg>
+          </div>
+          <h3 class="mt-6 text-h4 text-neutral-900">{item.title}</h3>
           <p class="mt-3 text-neutral-600">{item.description}</p>
-        </div>
+        </article>
       ))}
     </div>
   </div>

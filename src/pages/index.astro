@@ -19,31 +19,52 @@ const pageDescription = 'Reduza dívidas, recupere seu crédito e tenha acompanh
   <Highlights items={uspHighlights} />
   <Steps content={steps} />
   <Benefits content={benefits} />
-  <section id="formulario" class="bg-white py-20">
-    <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:flex-row">
-      <div class="flex-1 space-y-5">
-        <span class="text-sm font-semibold uppercase tracking-wide text-primary">Formulário seguro</span>
-        <h2 class="text-h2">Conte seu caso, nós cuidamos da negociação</h2>
+  <section id="formulario" class="relative isolate overflow-hidden bg-white py-24">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/12 via-white to-white" aria-hidden="true" />
+    <div class="relative mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="flex flex-col gap-6">
+        <span class="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-primary">
+          Formulário seguro
+        </span>
+        <h2 class="text-h2 text-neutral-900">Conte seu caso, nós cuidamos da negociação</h2>
         <p class="text-neutral-600">
           Em menos de 2 minutos você nos envia as informações necessárias para iniciarmos a análise. Respondemos com o plano personalizado em até 24 horas úteis.
         </p>
-        <ul class="space-y-3 text-sm text-neutral-600">
-          <li class="flex items-center gap-3">
-            <span class="h-2 w-2 rounded-full bg-primary"></span>
-            Dados criptografados e protegidos pela LGPD.
+        <ul class="grid gap-4 text-sm text-neutral-600">
+          <li class="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-[0_20px_50px_-38px_rgba(102,42,231,0.35)] backdrop-blur">
+            <span class="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m5 10 3 3L15 6" />
+              </svg>
+            </span>
+            <p>Dados criptografados, 100% protegidos pela LGPD.</p>
           </li>
-          <li class="flex items-center gap-3">
-            <span class="h-2 w-2 rounded-full bg-primary"></span>
-            Atendimento humano em todas as etapas.
+          <li class="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-[0_20px_50px_-38px_rgba(102,42,231,0.35)] backdrop-blur">
+            <span class="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m5 10 3 3L15 6" />
+              </svg>
+            </span>
+            <p>Acompanhamento humano em todas as etapas da negociação.</p>
           </li>
-          <li class="flex items-center gap-3">
-            <span class="h-2 w-2 rounded-full bg-primary"></span>
-            Sem custo para iniciar.
+          <li class="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-[0_20px_50px_-38px_rgba(102,42,231,0.35)] backdrop-blur">
+            <span class="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m5 10 3 3L15 6" />
+              </svg>
+            </span>
+            <p>Sem custo para iniciar, você só paga após aprovar o plano.</p>
           </li>
         </ul>
       </div>
-      <div class="flex-1">
-        <MultiStepForm client:load />
+      <div class="relative">
+        <div class="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-primary/20 blur-[100px]" aria-hidden="true" />
+        <div class="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/95 p-6 shadow-[0_30px_80px_-45px_rgba(102,42,231,0.45)] backdrop-blur">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/80" aria-hidden="true" />
+          <div class="relative">
+            <MultiStepForm client:load />
+          </div>
+        </div>
       </div>
     </div>
   </section>

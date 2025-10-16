@@ -50,6 +50,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
       },
+      keyframes: {
+        grid: {
+          '0%': { transform: 'translate3d(0,0,0)' },
+          '100%': { transform: 'translate3d(0,-50%,0)' }
+        }
+      },
+      animation: {
+        grid: 'grid 35s linear infinite'
+      },
       screens: {
         xs: '480px',
         sm: '640px',

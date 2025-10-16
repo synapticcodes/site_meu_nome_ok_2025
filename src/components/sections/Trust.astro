@@ -8,17 +8,25 @@ interface Props {
 const { content } = Astro.props;
 ---
 <section aria-label="Parceiros" class="bg-white">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12">
-    <div class="flex flex-col items-center gap-3 text-center">
-      <p class="text-sm font-semibold uppercase tracking-wide text-primary">Confiança comprovada</p>
-      <h2 class="text-h3">{content.title}</h2>
-    </div>
-    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-      {content.logos.map((logo) => (
-        <div class="flex items-center justify-center rounded-3xl border border-neutral-100 bg-neutral-50 p-6 shadow-sm">
-          <img src={logo.src} alt={logo.alt} class="max-h-12 w-auto object-contain" loading="lazy" />
-        </div>
-      ))}
+  <div class="relative isolate overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/10 via-white to-transparent" aria-hidden="true" />
+    <div class="absolute inset-y-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+    <div class="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16">
+      <div class="flex flex-col items-center gap-3 text-center">
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">Confiança comprovada</p>
+        <h2 class="text-h3 text-neutral-900">{content.title}</h2>
+        <p class="max-w-2xl text-sm text-neutral-500">
+          Empresas e instituições que já compartilharam seus casos conosco e recomendam o Meu Nome OK.
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+        {content.logos.map((logo) => (
+          <div class="group relative flex h-32 items-center justify-center overflow-hidden rounded-3xl border border-neutral-100 bg-white/90 p-6 shadow-[0_18px_45px_-40px_rgba(17,24,39,0.45)] backdrop-blur-sm transition hover:-translate-y-1">
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" aria-hidden="true" />
+            <img src={logo.src} alt={logo.alt} class="max-h-12 w-auto object-contain brightness-110" loading="lazy" />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
