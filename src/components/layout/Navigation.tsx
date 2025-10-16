@@ -25,7 +25,7 @@ export const Navigation = ({ navItems, cta }: NavigationProps) => {
     <header className="sticky top-0 z-50 backdrop-blur-lg">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-5">
         <a href="/" className="flex items-center gap-3 text-primary" aria-label="Meu Nome OK">
-          <img src="/icons/logo.svg" alt="Meu Nome OK" className="h-10 w-auto" />
+          <img src="/icons/logo.png" alt="Meu Nome OK" className="h-10 w-auto" />
           <span className="font-display text-lg font-semibold">Meu Nome OK</span>
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-6 md:flex">

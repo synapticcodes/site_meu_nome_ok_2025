@@ -12,7 +12,6 @@ export const footerLegalLinks = [
 ] as const;
 
 export const footerSocialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/meunomeok', icon: '/icons/instagram.svg' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/meu-nome-ok', icon: '/icons/linkedin.svg' },
-  { label: 'WhatsApp', href: 'https://wa.me/5508001234567', icon: '/icons/whatsapp.svg' }
+  { label: 'Instagram', href: 'https://www.instagram.com/meunome.ok/', icon: '/icons/instagram.svg' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/meu-nome-ok', icon: '/icons/linkedin.svg' }
 ] as const;

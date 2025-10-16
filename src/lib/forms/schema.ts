@@ -89,7 +89,10 @@ export const serverFormSchema = z.object({
   hasLawsuit: lawsuitEnum,
   preferredContact: preferredContactEnum,
   bestTime: bestTimeEnum,
-  additionalInfo: z.string().max(500).optional()
+  additionalInfo: z.string().max(500).optional(),
+  consent: z
+    .boolean()
+    .refine((value) => value === true, { message: 'É necessário aceitar a política de privacidade' })
 });
 
 export type ClientFormValues = z.infer<typeof clientFormSchema>;

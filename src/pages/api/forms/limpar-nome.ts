@@ -2,6 +2,9 @@ import type { APIRoute } from 'astro';
 import { onlyDigits } from '@utils/formatters';
 import { serverFormSchema } from '@lib/forms/schema';
 import type { ServerFormValues } from '@lib/forms/schema';
+import { insertLead } from '@lib/db';
+
+export const prerender = false;
 
 type SubmissionPayload = ServerFormValues & {
   submittedAt: string;
@@ -53,11 +56,35 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
+  let bodyText = '';
+  try {
+    bodyText = await request.text();
+  } catch (error) {
+    console.error('Error reading request body', error);
+    return new Response(
+      JSON.stringify({ success: false, error: 'INVALID_JSON', message: 'Não foi possível ler o corpo da requisição.' }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  }
+
+  if (!bodyText.trim()) {
+    return new Response(
+      JSON.stringify({ success: false, error: 'EMPTY_BODY', message: 'Corpo da requisição vazio.' }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  }
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(bodyText);
   } catch (error) {
-    console.error('Invalid JSON payload', error);
+    console.error('Invalid JSON payload', error, bodyText);
     return new Response(
       JSON.stringify({ success: false, error: 'INVALID_JSON', message: 'Formato de requisição inválido.' }),
       {
@@ -110,6 +137,11 @@ export const POST: APIRoute = async ({ request }) => {
   };
 
   try {
+    await insertLead({
+      ...payload,
+      additionalInfo: payload.additionalInfo ?? null
+    });
+
     const webhookUrl = import.meta.env.FORM_WEBHOOK_URL;
     if (webhookUrl) {
       await fetch(webhookUrl, {
