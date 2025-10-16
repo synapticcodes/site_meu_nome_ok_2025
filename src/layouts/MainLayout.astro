@@ -92,17 +92,19 @@ const canonicalUrl = Astro.site
       navItems={navItems}
       legalLinks={footerLegalLinks}
       socialLinks={footerSocialLinks}
-      businessAddress="Av. Paulista, 1000 - São Paulo, SP"
-      phone="08001234567"
-      email="contato@meunomeok.com.br"
+      businessAddress="Alameda Rio Negro 503, Barueri, São Paulo"
+      email="site@meunomeok.com"
     />
     <CookieConsent client:load />
     <script is:inline>
       document.documentElement.classList.remove('no-js');
     </script>
     <script type="module" is:inline>
-      import { registerWebVitals } from '@utils/webVitals';
-      registerWebVitals();
+      import('/src/utils/webVitals.ts')
+        .then(({ registerWebVitals }) => registerWebVitals())
+        .catch((error) => {
+          console.error('[web-vitals] Failed to load tracker', error);
+        });
     </script>
   </body>
 </html>
