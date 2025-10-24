@@ -67,6 +67,13 @@ export default defineConfig({
       VitePWA({
         registerType: 'autoUpdate',
         includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+        // Evita manter HTML antigo em cache e força atualização imediata
+        workbox: {
+          cleanupOutdatedCaches: true,
+          clientsClaim: true,
+          skipWaiting: true,
+          globPatterns: ['**/*.{js,css,svg,png,ico,json,webmanifest}']
+        },
         manifest: {
           name: 'Meu Nome OK',
           short_name: 'MeuNomeOK',
