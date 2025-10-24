@@ -7,7 +7,7 @@ export const limpeSeuNomePage = {
     title: 'Conte sua história para começarmos a negociar hoje mesmo',
     description:
       'Leva menos de dois minutos para enviar suas informações. Nossa equipe responde em até 24 horas úteis com um plano personalizado.',
-    primaryCta: { label: 'Quero limpar meu nome', href: '#formulario' },
+    primaryCta: { label: 'Quero limpar meu nome', href: '/#formulario' },
     secondaryCta: { label: 'Tirar dúvidas antes', href: '/ajuda' }
   },
   highlights: [

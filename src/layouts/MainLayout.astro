@@ -1,10 +1,11 @@
 ---
-import '../styles/global.css';
-import { Navigation } from '@components/layout/Navigation';
+import globalStyles from '../styles/global.css?inline';
+import Navigation from '@components/layout/Navigation.astro';
 import Footer from '@components/layout/Footer.astro';
 import Seo from '@components/layout/Seo.astro';
 import { navItems, footerLegalLinks, footerSocialLinks } from '@config/navigation';
 import CookieConsent from '@components/layout/CookieConsent.tsx';
+import webVitalsScript from '../scripts/register-web-vitals.ts?url';
 
 interface Props {
   title: string;
@@ -24,8 +25,8 @@ interface Props {
 const {
   title,
   description,
-  ctaLabel = 'Quero negociar minhas dívidas',
-  ctaHref = '#formulario',
+  ctaLabel = 'Quero resolver minhas dívidas',
+  ctaHref = '/#formulario',
   breadcrumbs = [],
   ogImage
 } = Astro.props;
@@ -33,6 +34,7 @@ const {
 const canonicalUrl = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).toString()
   : Astro.url.toString();
+
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
@@ -40,6 +42,7 @@ const canonicalUrl = Astro.site
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style is:global set:html={globalStyles}></style>
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -92,19 +95,12 @@ const canonicalUrl = Astro.site
       navItems={navItems}
       legalLinks={footerLegalLinks}
       socialLinks={footerSocialLinks}
-      businessAddress="Alameda Rio Negro 503, Barueri, São Paulo"
       email="site@meunomeok.com"
     />
     <CookieConsent client:load />
     <script is:inline>
       document.documentElement.classList.remove('no-js');
     </script>
-    <script type="module" is:inline>
-      import('/src/utils/webVitals.ts')
-        .then(({ registerWebVitals }) => registerWebVitals())
-        .catch((error) => {
-          console.error('[web-vitals] Failed to load tracker', error);
-        });
-    </script>
+    <script type="module" src={webVitalsScript}></script>
   </body>
 </html>

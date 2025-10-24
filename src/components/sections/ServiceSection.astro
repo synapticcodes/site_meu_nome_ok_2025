@@ -1,9 +1,16 @@
 ---
+type SectionItem =
+  | string
+  | {
+      question: string;
+      answer: string;
+    };
+
 interface SectionContent {
   id: string;
   badge?: string;
   title: string;
-  content: readonly string[];
+  content: readonly SectionItem[];
 }
 
 interface Props {
@@ -20,13 +27,27 @@ const { section } = Astro.props as Props;
       </span>
     )}
     <h2>{section.title}</h2>
-    <ul class="space-y-3 text-neutral-600">
-      {section.content.map((paragraph) => (
-        <li class="flex gap-3">
-          <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></span>
-          <span>{paragraph}</span>
-        </li>
-      ))}
+    <ul class="space-y-3 text-neutral-800">
+      {section.content.map((item) =>
+        typeof item === 'string' ? (
+          <li class="flex gap-3">
+            <span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></span>
+            <span>{item}</span>
+          </li>
+        ) : (
+          <li class="list-none">
+            <details class="group rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors hover:border-primary/40">
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-neutral-800 marker:content-none">
+                <span class="font-medium">{item.question}</span>
+                <span aria-hidden="true" class="select-none text-primary transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-neutral-600">{item.answer}</p>
+            </details>
+          </li>
+        )
+      )}
     </ul>
   </div>
 </section>

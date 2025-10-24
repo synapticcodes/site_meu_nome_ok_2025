@@ -1,19 +1,20 @@
 export const hero = {
   eyebrow: 'Renegociação humanizada',
-  title: 'Limpe seu nome com especialistas que negociam por você',
+  title: 'Resolva suas dívidas com especialistas que atuam por você',
   description:
-    'Unimos tecnologia e atendimento personalizado para reduzir dívidas e recuperar seu crédito em poucos dias.',
-  primaryCta: { label: 'Quero negociar minhas dívidas', href: '#formulario' },
+    'Unimos tecnologia e atendimento personalizado para reduzir débitos e abrir caminho para recuperar seu crédito.',
+  primaryCta: { label: 'Quero resolver minhas dívidas', href: '/#formulario' },
   secondaryCta: { label: 'Entenda como funciona', href: '#como-funciona' },
   highlights: [
     { label: 'Casos atendidos', value: '35 mil+' },
-    { label: 'Índice médio de redução', value: '62%' },
-    { label: 'Tempo médio de resposta', value: '24h' }
+    { label: '+ de 2 mil acordos', value: 'fechados todos os meses' },
+    { label: '+ de R$ 7 milhões', value: 'em descontos oferecidos todos os meses' }
   ]
 };
 
 export const trustSection = {
-  title: 'Parceiros que confiam no Meu Nome OK',
+  title: 'Nosso Parceiros',
+  description: 'Empresas com quem negociamos descontos e planos que cabem no seu bolso.',
   logos: Array.from({ length: 44 }, (_, index) => {
     const id = index + 1;
     const src = `/images/partners/N${id}.png`;
@@ -25,22 +26,35 @@ export const trustSection = {
   })
 };
 
+export const expertCare = {
+  eyebrow: 'Suas finanças com tecnologia e sem complicação',
+  title: 'Especialistas Cuidam, Você Relaxa',
+  paragraphs: [
+    'A Meu Nome OK é uma empresa de tecnologia dedicada a tornar sua vida financeira mais leve e previsível.',
+    'Simples e sem sair de casa, você relaxa enquanto o seu caso é tratado por nossos especialistas.'
+  ],
+  highlights: [
+    'Menos burocracia, zero preocupação e transparência em todos os passos!',
+    'Assim, suas contas ficam em ordem, o bolso respira e o fim do mês deixa de ser um sufoco. Tudo isso com a agilidade que você precisa!'
+  ]
+};
+
 export const benefits = {
   title: 'Você resolve em uma jornada desenhada para reduzir suas dívidas',
   description:
-    'Mapeamos suas restrições, negociamos com credores e acompanhamos cada etapa até a atualização no seu CPF ou CNPJ.',
+    'Reunimos tudo em um plano com desconto e parcelas leves, para sua vida financeira voltar aos trilhos.',
   items: [
     {
-      title: 'Diagnóstico gratuito',
-      description: 'Levantamos todas as pendências e priorizamos as negociações com maior impacto na sua pontuação.'
+      title: 'Diagnóstico profissional',
+      description: 'Mapeamos pendências e priorizamos a redução máxima da sua dívida.'
     },
     {
-      title: 'Negociação ativa',
-      description: 'Nossa equipe fala diretamente com bancos e empresas credoras para chegar ao acordo mais vantajoso.'
+      title: 'Desconto consolidado',
+      description: 'Transformamos seus débitos em um acordo único com desconto e valor mensal que cabe no bolso.'
     },
     {
       title: 'Acompanhamento total',
-      description: 'Você recebe atualizações semanais e apoio jurídico caso precise contestar cobranças indevidas.'
+      description: 'Você recebe status semanal e tem apoio jurídico, se necessario.'
     }
   ]
 };
@@ -51,23 +65,24 @@ export const steps = {
   items: [
     {
       step: 1,
-      title: 'Cadastro e análise',
-      description: 'Você envia seus dados no formulário seguro e autorizamos a consulta nos órgãos de proteção ao crédito.'
+      title: 'Envie suas dívidas',
+      description:
+        'Assim mapeamos valores, prazos, juros, parcelas e histórico de pagamentos para estruturar um plano de alívio imediato.'
     },
     {
       step: 2,
       title: 'Estratégia personalizada',
-      description: 'Montamos um plano priorizando créditos com maior urgência e simulações de pagamento.'
+      description: 'Consolidamos suas dívidas em um plano único, com parcelas e prazo compatíveis com seu orçamento.'
     },
     {
       step: 3,
       title: 'Negociação assistida',
-      description: 'Especialistas negociam diretamente com credores buscando reduções agressivas e novas condições.'
+      description: 'Nossos especialistas buscam reduções agressivas e novas condições junto a credores.'
     },
     {
       step: 4,
-      title: 'Quitação e comprovação',
-      description: 'Você recebe o acordo final, realiza o pagamento e acompanhamos a baixa até o nome limpo.'
+      title: 'Pronto! Tudo resolvido!',
+      description: 'Processo concluído! Dívida resolvida, bolso aliviado e você já pode voltar a ter uma vida sem restrições!'
     }
   ]
 };
@@ -193,7 +208,7 @@ export const press = {
     },
     {
       name: 'Pequenas Empresas & Grandes Negócios',
-      src: '/images/press/Pequenas_Empresas_&_Grandes_Negócios_(programa_de_televisão) (1).png',
+      src: '/images/press/logo-pegn.png',
       alt: 'Logo PEGN',
       href: 'https://revistapegn.globo.com/conteudo-de-marca/pressworks/noticia/2024/12/lawtech-reduz-dividas-de-emprestimos-consignados-assegura-indenizacoes-de-ate-6-digitos-e-tornase-a-principal-salvacao-para-consumidores-endividados.ghtml'
     },
@@ -205,7 +220,7 @@ export const press = {
     },
     {
       name: 'É Pop na Web',
-      src: '/images/press/Logo-É-pop-na-web-1-2 (1).png',
+      src: '/images/press/logo-epop-na-web.png',
       alt: 'Logo É Pop na Web',
       href: 'https://epopnaweb.com.br/se-depender-da-empresa-meu-nome-ok-seu-salario-nunca-mais-vai-sofrer-descontos-de-emprestimos-consignados/'
     },
@@ -239,7 +254,52 @@ export const faq = {
     {
       question: 'Existe custo para iniciar o processo?',
       answer:
-        'Não. O diagnóstico inicial é gratuito. Somente após aceitarmos o acordo negociado é que as condições de pagamento são apresentadas.'
+        'Todos os serviços disponíveis são cobrados. Porém, os preços são acessíveis e temos condições facilitadas de pagamentos.'
+    },
+    {
+      question: 'O que é o "plano único com desconto"?',
+      answer:
+        'É a forma de juntar suas pendências em um só plano, com parcela fixa que cabe no seu bolso e prazo para começar a pagar.'
+    },
+    {
+      question: 'Preciso estar negativado para usar o serviço?',
+      answer:
+        'Não. O plano serve para organizar pendências e proteger seu orçamento, esteja você negativado ou não.'
+    },
+    {
+      question: 'Tenho consignado. Posso participar?',
+      answer:
+        'Sim. Avaliamos seu contracheque, descontos e prazos para definir uma parcela sustentável.'
+    },
+    {
+      question: 'Onde acompanho meu caso?',
+      answer:
+        'Você recebe atualizações semanais e tem histórico de etapas e documentos em um painel seguro.'
+    },
+    {
+      question: 'Meu score vai subir?',
+      answer:
+        'Ao regularizar suas dívidas, seu score de crédito tende a subir, facilitando a aprovação de financiamentos com juros menores.'
+    },
+    {
+      question: 'Vocês entram em contato com meus familiares?',
+      answer:
+        'Não. A comunicação é direta com você, preservando sigilo e conformidade com a LGPD.'
+    },
+    {
+      question: 'Vocês tratam dívidas de serviços (água, luz, telefone)?',
+      answer:
+        'Sim. Incluímos pendências essenciais no mapeamento para evitar corte e organizar prioridades.'
+    },
+    {
+      question: 'Tenho ação judicial. Posso aderir?',
+      answer:
+        'Sim. Em alguns cenários, há apoio jurídico para orientar os próximos passos.'
+    },
+    {
+      question: 'O plano inclui educação financeira?',
+      answer:
+        'Sim. Você recebe auto-conteúdo e dicas práticas para manter o orçamento sob controle.'
     }
   ]
 };

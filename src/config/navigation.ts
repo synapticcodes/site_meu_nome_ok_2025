@@ -1,7 +1,6 @@
 export const navItems = [
   { label: 'Como funciona', href: '/como-funciona' },
   { label: 'O que fazemos', href: '/o-que-fazemos' },
-  { label: 'Limpe seu nome', href: '/limpe-seu-nome' },
   { label: 'Ajuda', href: '/ajuda' }
 ] as const;
 

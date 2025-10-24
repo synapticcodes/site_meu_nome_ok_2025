@@ -186,16 +186,23 @@ export const MultiStepForm = () => {
             <Controller
               control={form.control}
               name="document"
-              render={({ field, fieldState }) => (
-                <Input
-                  id="document"
-                  label={form.watch('personType') === 'cpf' ? 'CPF' : 'CNPJ'}
-                  placeholder={form.watch('personType') === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'}
-                  error={fieldState.error?.message}
-                  value={formatDocument(field.value ?? '', form.watch('personType'))}
-                  onChange={(event) => field.onChange(onlyDigits(event.target.value))}
-                />
-              )}
+              render={({ field, fieldState }) => {
+                const { ref, onChange, onBlur, value, name } = field;
+                return (
+                  <Input
+                    id="document"
+                    name={name}
+                    ref={ref}
+                    inputMode="numeric"
+                    label={form.watch('personType') === 'cpf' ? 'CPF' : 'CNPJ'}
+                    placeholder={form.watch('personType') === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'}
+                    error={fieldState.error?.message}
+                    value={formatDocument(value ?? '', form.watch('personType'))}
+                    onChange={(event) => onChange(onlyDigits(event.target.value))}
+                    onBlur={onBlur}
+                  />
+                );
+              }}
             />
             <div className="grid gap-4 sm:grid-cols-2">
               <Controller
@@ -215,16 +222,23 @@ export const MultiStepForm = () => {
               <Controller
                 control={form.control}
                 name="phone"
-                render={({ field, fieldState }) => (
-                  <Input
-                    id="phone"
-                    label="Telefone"
-                    placeholder="(11) 99999-9999"
-                    error={fieldState.error?.message}
-                    value={formatPhone(field.value ?? '')}
-                    onChange={(event) => field.onChange(onlyDigits(event.target.value))}
-                  />
-                )}
+                render={({ field, fieldState }) => {
+                  const { ref, onChange, onBlur, value, name } = field;
+                  return (
+                    <Input
+                      id="phone"
+                      name={name}
+                      ref={ref}
+                      inputMode="tel"
+                      label="Telefone"
+                      placeholder="(11) 99999-9999"
+                      error={fieldState.error?.message}
+                      value={formatPhone(value ?? '')}
+                      onChange={(event) => onChange(onlyDigits(event.target.value))}
+                      onBlur={onBlur}
+                    />
+                  );
+                }}
               />
             </div>
           </div>
@@ -258,16 +272,23 @@ export const MultiStepForm = () => {
               <Controller
                 control={form.control}
                 name="debtValue"
-                render={({ field, fieldState }) => (
-                  <Input
-                    id="debtValue"
-                    label="Valor aproximado da dívida"
-                    placeholder="R$ 0,00"
-                    error={fieldState.error?.message}
-                    value={field.value ? formatCurrency(field.value) : ''}
-                    onChange={(event) => field.onChange(onlyDigits(event.target.value))}
-                  />
-                )}
+                render={({ field, fieldState }) => {
+                  const { ref, onChange, onBlur, value, name } = field;
+                  return (
+                    <Input
+                      id="debtValue"
+                      name={name}
+                      ref={ref}
+                      inputMode="numeric"
+                      label="Valor aproximado da dívida"
+                      placeholder="R$ 0,00"
+                      error={fieldState.error?.message}
+                      value={value ? formatCurrency(value) : ''}
+                      onChange={(event) => onChange(onlyDigits(event.target.value))}
+                      onBlur={onBlur}
+                    />
+                  );
+                }}
               />
               <Controller
                 control={form.control}

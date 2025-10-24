@@ -8,7 +8,7 @@ interface Props {
 const { content } = Astro.props as Props;
 ---
 <section class="bg-gradient-to-b from-white via-neutral-50 to-neutral-100">
-  <div class="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-16 text-center">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 pt-[calc(theme(space.28)+env(safe-area-inset-top))] pb-16 text-center sm:py-20 lg:py-24">
     <span class="mx-auto inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
       {content.eyebrow}
     </span>
