@@ -11,6 +11,5 @@ export const footerLegalLinks = [
 ] as const;
 
 export const footerSocialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/meunome.ok/', icon: '/icons/instagram.svg' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/meu-nome-ok', icon: '/icons/linkedin.svg' }
+  { label: 'Instagram', href: 'https://www.instagram.com/meunome.ok/', icon: '/icons/instagram.svg' }
 ] as const;

@@ -28,7 +28,7 @@ export const services = {
         title: 'ETAPA 2 — Um plano que cabe no seu bolso',
         content: [
           'Reunimos tudo em um só plano com desconto, parcela fixa e prazo para começar a pagar.',
-          'Alívio no mês: você volta a respirar e abre caminho para novas oportunidades de crédito.*'
+          'Alívio no mês: você volta a respirar e abre caminho para novas oportunidades de crédito.'
         ]
       },
       {
@@ -46,8 +46,7 @@ export const services = {
         title: 'ETAPA 4 — Estamos com você até o fim',
         content: [
           'Atualizações semanais e suporte quando precisar, do começo ao fim.',
-          'Acompanhamos os registros conforme as regras de cada instituição até concluir o plano.',
-          'As oportunidades de crédito dependem das políticas do mercado e do seu perfil.'
+          'Acompanhamos os registros conforme as regras de cada instituição até concluir o plano.'
         ]
       }
     ],
@@ -78,7 +77,7 @@ export const services = {
         title: 'Para pessoas físicas',
         content: [
           'Renegociação de todos os tipos de dívidas (empréstimos, cartões de crédito e financiamentos, etc)',
-          'Redução de dívidas com plano de pagamento ajustado ao seu orçamento,'
+          'Redução de dívidas com plano de pagamento ajustado ao seu orçamento'
         ]
       },
       {
@@ -96,7 +95,7 @@ export const services = {
         title: 'Consultoria financeira e jurídica',
         content: [
           'Análise de contratos, contestação de cobranças abusivas e suporte jurídico quando necessário.',
-          'Orientação fianceira para prevenção de endividamento'
+          'Orientação financeira para prevenção de endividamento'
         ]
       }
     ],
@@ -133,12 +132,8 @@ export const services = {
           },
           {
             question: 'Quais documentos preciso enviar?',
-            answer: `Pedimos só o essencial para avaliar sua situação com segurança:
-Documento com foto (RG ou CNH) e CPF; comprovante de residência;
-Comprovante de renda (holerite/benefício) e, se houver, extrato de descontos em folha;
-O que tiver das pendências (contratos, fatura, carta/print com valores e prazos);
-Seus gastos mensais para avaliação de comprometimento de renda;
-Se algo faltar, orientamos você passo a passo — sem burocracia.`
+            answer:
+              'Pedimos só o essencial para avaliar sua situação com segurança: documentos pessoais, informações sobre suas dívidas e seus gastos mensais para avaliação de comprometimento de renda. Se algo faltar, orientamos você passo a passo — sem burocracia.'
           },
           {
             question: 'Posso renegociar mais de uma dívida ao mesmo tempo?',
